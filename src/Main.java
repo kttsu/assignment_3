@@ -1,6 +1,5 @@
 import java.util.HashMap;
 import java.util.Map;
-import java.util.NoSuchElementException;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,17 +15,15 @@ public class Main {
         for (Map.Entry<String, String> entry : countries.entrySet()) {
             System.out.println(entry.getKey() + ":" + entry.getValue());
         }
-
-        try {
-            String capital = getCapital(countries,"インド");
+        String capital = getCapital(countries, "インド");
+        if ("指定された国は存在しません".equals(capital)) {
+            System.out.println('\n' + capital);
+        } else {
             System.out.println("インド:" + capital);
-        } catch (NoSuchElementException e) {
-            System.out.print('\n');
-            System.out.println("※指定された国は存在しません");
         }
-    }
+    }   
 
-   private static String getCapital(Map<String, String> map, String country) {
+ private static String getCapital(Map<String, String> map, String country) {
         // キーが存在する場合は対応する首都を返す
         // 存在しない場合はデフォルト値を返す
         return map.getOrDefault(country, "指定された国は存在しません");
