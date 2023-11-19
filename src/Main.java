@@ -26,12 +26,9 @@ public class Main {
         }
     }
 
-    private static String getCapital(Map<String,String> map,String country) {
-        // 存在する場合は対応する首都を返し、存在しない場合はNoSuchElementExceptionをスロー
-        if (map.containsKey(country)) {
-            return map.get(country);
-        } else {
-            throw new NoSuchElementException();
-        }
+   private static String getCapital(Map<String, String> map, String country) {
+        // キーが存在する場合は対応する首都を返す
+        // 存在しない場合はデフォルト値を返す
+        return map.getOrDefault(country, "指定された国は存在しません");
     }
 }
